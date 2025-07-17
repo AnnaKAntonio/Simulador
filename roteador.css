@@ -1,0 +1,534 @@
+/* Reset e fontes básicas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", "Roboto", sans-serif;
+  background-color: #00bcd4; /* Cor de fundo do body, do seu código original */
+  color: #333;
+}
+
+/* Container geral */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar (menu lateral) - mantido do seu código original */
+.sidebar {
+  width: 220px;
+  background-color: #fff;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .logo {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #00bcd4;
+  margin-bottom: 30px;
+}
+
+.sidebar nav ul {
+  list-style: none;
+}
+
+.sidebar nav li {
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar nav li:hover,
+.sidebar nav li.active {
+  background-color: #ffd700;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  background-color: #f4f4f4; /* Fundo do conteúdo principal, do seu código original */
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Tabs no topo - mantido do seu código original */
+.tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.tab {
+  background-color: #e0f7fa;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: background-color 0.2s, border 0.2s;
+}
+
+.tab:hover {
+  background-color: #b2ebf2;
+}
+
+.tab.active {
+  background-color: #fff;
+  font-weight: bold;
+  border: 2px solid #00bcd4;
+}
+
+.language {
+  margin-left: auto;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.top-actions button {
+  margin-left: 10px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #00bcd4;
+  color: white;
+  cursor: pointer;
+}
+
+/* Painel de status (Network Map) - mantido do seu código original */
+.status-panel {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.status-panel > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.status-panel .icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* Tabela de topologia (Network Map) - mantido do seu código original */
+.topology h3 {
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+table th {
+  background-color: #00bcd4;
+  color: #fff;
+}
+
+.btn-mesh {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #00bcd4;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------- */
+/* Cores do tema (ajustadas para corresponder às imagens) */
+/* ------------------------------------------------------------- */
+:root {
+  --primary-blue: #00bcd4; /* Cor principal, como a aba ativa e botões */
+  --light-blue: #e0f7fa; /* Cor de fundo das abas inativas */
+  --dark-green-title: #00796b; /* Cor dos títulos de seção */
+  --text-color: #333;
+  --border-color-input: #d3d3d3; /* Borda dos inputs e divisores (cinza claro) */
+  --background-panel: #ffffff;
+  --panel-shadow: rgba(0, 0, 0, 0.08);
+  --hover-blue: #0097a7;
+  --active-yellow: #fdd241; /* Cor do "Middle" ativo na imagem Wireless */
+  --inactive-signal-bg: #eaeaea; /* Fundo do seletor de sinal inativo */
+  --inactive-signal-border: #bdbdbd; /* Borda do seletor de sinal inativo */
+  --internet-title-border: #ededed; /* Borda do título em Internet Settings */
+  --wireless-band-border: #eaeaea; /* Borda pontilhada entre bandas Wireless */
+}
+
+/* Estilos para seções de formulário gerais (os painéis brancos) */
+.form-section {
+  background-color: var(--background-panel);
+  padding: 25px 30px; /* Mais padding horizontal */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px var(--panel-shadow);
+  margin-bottom: 25px;
+}
+
+/* Títulos das seções (Internet Settings, Wireless Settings) */
+.section-title {
+  color: var(--dark-green-title);
+  margin-bottom: 25px;
+  font-size: 1.6rem;
+  padding-bottom: 10px;
+  font-weight: 500;
+}
+/* Apenas o Internet Settings tem uma borda mais clara para o título */
+.internet-settings .section-title {
+  border-bottom: 1px solid var(--internet-title-border);
+}
+/* O Wireless Settings terá uma borda de título um pouco mais escura, como na imagem original */
+.wireless-settings .section-title {
+  border-bottom: 1px solid var(--border-color-input); /* Reutilizando a cor da borda do input */
+}
+
+/* Grupo de formulário genérico (label + input) */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  flex-basis: 200px; /* Largura para os labels (ajuste conforme necessário) */
+  min-width: 150px; /* Garante que não encolham demais */
+  font-weight: 400;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  margin-right: 15px;
+}
+
+/* Estilo base dos inputs de texto, senha e selects */
+.styled-input {
+  flex-grow: 1;
+  padding: 9px 12px;
+  border: 1px solid var(--border-color-input);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  max-width: 280px; /* Largura máxima para inputs de texto */
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.styled-input:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+}
+
+/* Estilos Específicos para INPUTS do Internet Settings */
+.internet-settings .styled-input {
+  background-color: var(--background-panel); /* Fundo branco */
+  box-shadow: none; /* Sem sombra interna */
+}
+.internet-settings .styled-input:focus {
+  box-shadow: 0 0 0 1px var(--primary-blue); /* Borda azul fina ao focar */
+}
+
+/* Estilos Específicos para INPUTS do Wireless Settings */
+.wireless-settings .styled-input {
+  background-color: #f8f8f8; /* Fundo levemente cinza */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
+}
+.wireless-settings .styled-input:focus {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05),
+    0 0 0 3px rgba(0, 188, 212, 0.1); /* Sombra externa azul clara */
+}
+
+/* Estilo específico para o SELECT (dropdown) */
+.styled-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="%23888" viewBox="0 0 10 10"><path d="M5 6.5L0 1.5 1.5 0 5 3.5 8.5 0 10 1.5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+/* ------------------------------------------------------------- */
+/* Estilos para o campo de senha com ícone (Internet Settings) */
+/* ------------------------------------------------------------- */
+.password-input-with-icon {
+  position: relative;
+  flex-grow: 1;
+  max-width: 280px;
+}
+
+.password-input-with-icon .styled-input {
+  width: 100%;
+  padding-right: 40px; /* Espaço para o ícone */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 5px;
+}
+
+/* ------------------------------------------------------------- */
+/* Estilos específicos para Wireless Settings (mantidos como você gostou) */
+/* ------------------------------------------------------------- */
+
+/* Estilo dos checkboxes */
+.styled-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border-color-input);
+  border-radius: 3px;
+  background-color: var(--background-panel);
+  cursor: pointer;
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.styled-checkbox:checked {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.styled-checkbox:checked::before {
+  content: "✔";
+  display: block;
+  color: white;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkbox-label {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.2;
+}
+
+/* Estilo do link "Share Network" */
+.share-network-link {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-left: 15px;
+  transition: color 0.2s;
+}
+
+.share-network-link:hover {
+  color: var(--hover-blue);
+  text-decoration: underline;
+}
+
+/* Estilos específicos para as seções 2.4GHz e 5GHz */
+.wireless-band-section {
+  padding: 15px 0 10px;
+  margin-bottom: 25px;
+  border-bottom: 1px dashed var(--wireless-band-border); /* Linha divisória pontilhada */
+}
+
+.wireless-band-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.wireless-header {
+  margin-bottom: 20px;
+}
+
+.wireless-header label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.toggle-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Para alinhar o checkbox Hide SSID */
+.wireless-settings .form-group:has(.styled-input) .styled-checkbox,
+.wireless-settings .form-group:has(.styled-input) .checkbox-label {
+  margin-left: 15px;
+}
+
+/* Grupo da Senha e Seletor de Sinal */
+.password-group {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.password-group .styled-input {
+  margin-bottom: 10px;
+  max-width: 280px;
+}
+
+/* Seletor de intensidade de sinal (Low, Middle, High) */
+.signal-strength-selector {
+  display: flex;
+  width: fit-content;
+  border: 1px solid var(--inactive-signal-border);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--inactive-signal-bg);
+  font-size: 0.85rem;
+}
+
+.signal-option {
+  padding: 7px 12px;
+  cursor: pointer;
+  color: #555;
+  background-color: var(--inactive-signal-bg);
+  transition: background-color 0.2s, color 0.2s;
+  user-select: none;
+  font-weight: 400;
+}
+
+.signal-option:not(:last-child) {
+  border-right: 1px solid var(--inactive-signal-border);
+}
+
+.signal-option.active {
+  background-color: var(--active-yellow);
+  color: #333;
+  font-weight: 600;
+  border-color: var(--active-yellow); /* Ajusta a borda do item ativo */
+}
+
+/* Correção para borda do ativo (mantido) */
+.signal-option.active + .signal-option {
+  border-left-color: var(--active-yellow);
+}
+.signal-option:nth-child(2).active {
+  border-left-color: var(--active-yellow);
+}
+.signal-option[data-level="low"].active + .signal-option {
+  border-left-color: var(--active-yellow);
+}
+.signal-option[data-level="middle"].active + .signal-option {
+  border-left-color: var(--active-yellow);
+}
+
+/* ------------------------------------------------------------- */
+/* Container e Estilo do Botão Salvar (compartilhado e ajustado) */
+/* ------------------------------------------------------------- */
+.save-button {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: auto;
+}
+
+/* Estilo do botão Salvar para Internet Settings (alinhado à direita) */
+.internet-settings .button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 35px;
+  padding-right: 15px; /* Pequeno ajuste para alinhamento na imagem */
+}
+.internet-settings .save-button {
+  /* Não precisa de margin-left/right específicos aqui, o container já alinha */
+  margin: 0;
+}
+
+/* Estilo do botão Salvar para Wireless Settings (alinhado com inputs) */
+.wireless-settings .save-button {
+  display: block; /* Para o margin-left funcionar como em um bloco */
+  margin-top: 35px;
+  margin-left: 215px; /* Alinha o botão com o conteúdo dos inputs */
+  margin-right: auto; /* Garante que a margem esquerda empurre o botão */
+}
+
+/* ------------------------------------------------------------- */
+/* Responsividade - Ajustes para telas menores */
+/* ------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-group label {
+    margin-bottom: 8px;
+    min-width: unset;
+  }
+
+  .styled-input,
+  .password-input-with-icon,
+  .signal-strength-selector {
+    max-width: 100%;
+    width: 100%; /* Garante que ocupem a largura total */
+  }
+
+  .internet-settings .button-container,
+  .wireless-settings .save-button {
+    justify-content: center; /* Centraliza o botão */
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 0;
+  }
+
+  .wireless-settings .form-group:has(.styled-input) .styled-checkbox,
+  .wireless-settings .form-group:has(.styled-input) .checkbox-label {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .signal-strength-selector {
+    justify-content: space-around;
+  }
+}
