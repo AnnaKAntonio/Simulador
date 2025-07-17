@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simulador de Conexões de Rede</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Pequeno reset e estilo básico */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+            user-select: none;
+            background: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            /* Pode precisar ajustar esta altura agora que tem um navbar em cima */
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 220px;
+            background: #fff;
+            border-right: 1px solid #ddd;
+            padding: 15px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .product-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 6px;
+            margin-bottom: 10px;
+            cursor: grab;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            transition: background-color 0.2s, border-color 0.2s;
+            font-weight: 500;
+        }
+
+        .product-item:hover {
+            background-color: #e0f2f1;
+            border-color: #26a69a;
+        }
+
+        .product-item img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .workspace {
+            flex-grow: 1;
+            position: relative;
+            background: #fff;
+            overflow: auto;
+            padding: 16px;
+        }
+
+        .workspace>h2 {
+            color: #999;
+            text-align: center;
+            margin-top: 60px;
+            user-select: none;
+        }
+
+        #power-outlet {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 110px;
+            padding: 8px;
+            border: 2px solid #bbb;
+            border-radius: 8px;
+            background: #fafafa;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+            user-select: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            color: #444;
+        }
+
+        #power-outlet-port {
+            width: 20px;
+            height: 20px;
+            background: #ccc;
+            border: 2px solid #999;
+            border-radius: 4px;
+            margin: 6px auto 4px;
+        }
+
+        #power-outlet-light {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #aaa;
+            border: 2px solid #666;
+            margin-top: 4px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        #power-outlet-light.verde {
+            background-color: #4caf50;
+            box-shadow: 0 0 8px 2px #4caf50;
+        }
+
+        #power-outlet-light.apagada {
+            background-color: #aaa;
+            box-shadow: none;
+        }
+
+        #trash-can {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 110px;
+            padding: 10px 8px;
+            border: 2px dashed #999;
+            border-radius: 8px;
+            background: #fff;
+            text-align: center;
+            font-weight: 600;
+            color: #777;
+            cursor: default;
+            user-select: none;
+            box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        #trash-can.highlight {
+            border-color: #e53935;
+            background-color: #ffebee;
+            color: #b71c1c;
+        }
+
+        #trash-can img {
+            width: 32px;
+            height: 32px;
+            pointer-events: none;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-navbar">
+        <div class="logo">Navelink<span>Net</span><sup>®</sup></div>
+
+        <div class="menu-group">
+            <div class="menu-item">
+                File
+                <div class="dropdown-content">
+                    <a href="#">New Topology</a>
+                    <a href="#">Open...</a>
+                    <a href="#">Save</a>
+                    <a href="#">Save As...</a>
+                    <a href="#">Import</a>
+                    <a href="#">Export</a>
+                    <a href="#">Exit</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                Edit
+                <div class="dropdown-content">
+                    <a href="#">Undo</a>
+                    <a href="#">Redo</a>
+                    <a href="#">Cut</a>
+                    <a href="#">Copy</a>
+                    <a href="#">Paste</a>
+                    <a href="#">Delete</a>
+                    <a href="#">Select All</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                View
+                <div class="dropdown-content">
+                    <a href="#">Zoom In</a>
+                    <a href="#">Zoom Out</a>
+                    <a href="#">Fit to Window</a>
+                    <a href="#">Actual Size</a>
+                    <a href="#">Toolbar</a>
+                    <a href="#">Status Bar</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="dropdown-content">
+                    <a href="#">Packet Capture</a>
+                    <a href="#">IP Address Calculator</a>
+                    <a href="#">Subnet Mask Calculator</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                Help
+                <div class="dropdown-content">
+                    <a href="#">About Simulador</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                Roteador
+                <div class="dropdown-content">
+                    <a href="roteador.html">Iniciar configuração</a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="toolbar">
+            <button class="icon-button" title="New"><img src="https://img.icons8.com/ios-filled/24/document.png"
+                    alt="New"></button>
+            <button class="icon-button" title="Save"><img src="https://img.icons8.com/ios-filled/24/save.png"
+                    alt="Save"></button>
+            <button class="icon-button" title="Save As"><img src="https://img.icons8.com/ios-filled/24/save-as.png"
+                    alt="Save As"></button>
+            <button class="icon-button" title="Delete"><img
+                    src="https://img.icons8.com/ios-filled/24/delete-forever.png" alt="Delete"></button>
+            <div class="separator"></div>
+            <button class="icon-button" title="Undo"><img src="https://img.icons8.com/ios-filled/24/undo.png"
+                    alt="Undo"></button>
+            <button class="icon-button" title="Redo"><img src="https://img.icons8.com/ios-filled/24/redo.png"
+                    alt="Redo"></button>
+            <button class="icon-button" title="Pint"><img src="https://img.icons8.com/ios-filled/24/print.png"
+                    alt="Paste"></button>
+            <button class="icon-button" title="Delete"><img
+                    src="https://img.icons8.com/ios-filled/24/delete-forever.png" alt="Delete"></button>
+            <div class="separator"></div>
+            <button class="icon-button" title="Manage Devices"><img
+                    src="https://img.icons8.com/ios-filled/24/settings--v1.png" alt="Manage Devices"></button>
+        </div>
+
+        <div class="right-section">
+            <div class="dropdown">
+                <button class="dropdown-button">
+                    Menu <img src="https://img.icons8.com/ios-filled/20/expand-arrow.png" alt="Seta"
+                        style="filter: invert(30%);">
+                </button>
+                <div class="dropdown-content" style="right: 0; left: auto;">
+                    <a href="#">Option 1</a>
+                    <a href="#">Option 2</a>
+                    <a href="#">Option 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Equipamentos</h2>
+            <div class="product-item" draggable="true" id="roteador-template" data-type="roteador">
+                <img src="../Onu/imagens/roteador.png" alt="Ícone de Roteador" />
+                <span>Roteador Principal</span>
+            </div>
+            <div class="product-item" draggable="true" id="roteador-secundario-template"
+                data-type="roteador-secundario">
+                <img src="../Onu/imagens/dual.png" alt="Ícone de Roteador Secundario" />
+                <span>Roteador (Secundário)</span>
+            </div>
+            <div class="product-item" draggable="true" id="onu-template" data-type="onu">
+                <img src="../Onu/imagens/onu.png" alt="Ícone de ONU" />
+                <span>ONU</span>
+            </div>
+            <hr />
+            <h2>Dispositivos</h2>
+            <div class="product-item" draggable="true" id="tv-template" data-type="tv">
+                <img src="../Onu/imagens/tv.png" alt="">
+                <span>TV</span>
+            </div>
+            <div class="product-item" draggable="true" id="notebook-template" data-type="notebook">
+                <img src="../Onu/imagens/pc.png" alt="">
+                <span>PC</span>
+            </div>
+        </div>
+
+        <div class="workspace" id="workspace">
+            <h2>Arraste e Solte os Equipamentos Aqui</h2>
+
+            <div id="power-outlet">
+                <span>Tomada</span>
+                <div class="power-hole port" id="power-outlet-port" data-port-type="power-in"
+                    data-default-color="#cccccc"></div>
+                <span id="power-outlet-light" class="luz apagada"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="trash-can">
+        <img src="https://img.icons8.com/ios-filled/50/trash.png" alt="Lixeira" />
+        <span>Arraste para Remover</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
