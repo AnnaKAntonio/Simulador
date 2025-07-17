@@ -1,0 +1,570 @@
+/* style.css (Completo e Atualizado) */
+
+/* Pequeno reset e estilo básico */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ocupa 100% da altura da viewport */
+  font-family: "Segoe UI", "Roboto", sans-serif;
+  user-select: none;
+  background-color: #f0f2f5; /* Cor de fundo geral */
+  display: flex; /* Essencial para o layout column */
+  flex-direction: column; /* Organiza os filhos (navbar e container) em coluna */
+  min-height: 100vh; /* Garante que o body ocupe toda a altura da viewport */
+  position: relative;
+}
+
+html {
+  height: 100%; /* Garante que o html também ocupe 100% da altura */
+}
+
+/* --- Estilos para a Nova Barra de Navegação Superior e Toolbar --- */
+.top-navbar {
+  display: flex; /* Usa flexbox para alinhar itens horizontalmente */
+  align-items: center; /* Alinha itens verticalmente ao centro */
+  background-color: #f0f0f0; /* Fundo cinza claro */
+  border-bottom: 1px solid #c0c0c0; /* Borda inferior sutil */
+  padding: 5px 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  position: relative;
+  height: 40px; /* Altura fixa para a barra */
+  box-sizing: border-box; /* Inclui padding e borda na altura */
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+  flex-shrink: 0; /* Impede que a barra encolha */
+  width: 100%; /* Garante que ocupe toda a largura */
+}
+
+.top-navbar .logo {
+  height: 30px; /* Ajuste o tamanho do logo */
+  margin-right: 15px;
+  vertical-align: middle; /* Alinhamento vertical para o logo */
+  color: #00cfff; /* Pink */
+}
+
+.top-navbar .menu-group {
+  display: flex;
+  align-items: center;
+  gap: 0px; /* Sem espaçamento entre itens de menu por padrão, os separadores cuidam disso */
+}
+
+.top-navbar .menu-item {
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  position: relative;
+  user-select: none; /* Desabilita seleção de texto */
+  height: 100%; /* Ocupa a altura total do navbar */
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Evita que o texto quebre linha */
+  transition: background-color 0.2s;
+}
+
+.top-navbar .menu-item:hover {
+  background-color: #e0e0e0; /* Fundo ligeiramente mais escuro no hover */
+}
+
+.top-navbar .menu-item.active {
+  background-color: #d0d0d0; /* Estado ativo */
+}
+
+.top-navbar .dropdown-content {
+  display: none; /* Esconde o dropdown por padrão */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1; /* Garante que o dropdown fique sobre outros elementos */
+  top: 100%; /* Posiciona abaixo do item de menu pai */
+  left: 0; /* Alinha à esquerda do item de menu pai */
+  border-top: 1px solid #e0e0e0;
+}
+
+.top-navbar .menu-item:hover .dropdown-content {
+  display: block; /* Mostra o dropdown no hover do item de menu pai */
+}
+
+.top-navbar .dropdown-content a {
+  color: black;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block; /* Cada link como um bloco */
+  font-size: 13px;
+  white-space: nowrap; /* Evita que o texto quebre linha */
+}
+
+.top-navbar .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.top-navbar .central-title {
+  margin: 0 auto; /* Centraliza o título */
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  white-space: nowrap;
+  padding: 0 10px; /* Adiciona um pouco de padding para não colar nos ícones */
+}
+
+.top-navbar .toolbar {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Empurra a toolbar para a direita, antes do menu */
+  margin-right: 15px; /* Espaço entre a toolbar e o botão "Menu" */
+}
+
+.top-navbar .icon-button {
+  background: none;
+  border: none;
+  padding: 0 5px; /* Ajuste o padding para os ícones */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px; /* Altura consistente com o logo */
+  width: 30px; /* Torna-o quadrado */
+  border-radius: 3px;
+  transition: background-color 0.2s;
+  flex-shrink: 0; /* Impede que o botão encolha */
+}
+
+.top-navbar .icon-button:hover {
+  background-color: #e0e0e0;
+}
+
+.top-navbar .icon-button img {
+  height: 20px; /* Ajuste o tamanho do ícone */
+  width: 20px;
+  vertical-align: middle;
+  filter: invert(
+    20%
+  ); /* Ajuste a cor dos ícones se necessário (de preto para um cinza escuro) */
+}
+
+.top-navbar .separator {
+  width: 1px;
+  background-color: #ccc;
+  height: 25px;
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+.top-navbar .right-section {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espaçamento entre elementos alinhados à direita */
+  flex-shrink: 0;
+}
+
+.top-navbar .right-section .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.top-navbar .right-section .dropdown-button {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 5px 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.top-navbar .right-section .dropdown-button:hover {
+  background-color: #d0d0d0;
+}
+
+.top-navbar .right-section .dropdown-button img {
+  height: 16px;
+  width: 16px;
+}
+
+/* Garante que o dropdown do botão "Menu" abra para a direita */
+.top-navbar .right-section .dropdown-content {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0; /* Alinha o dropdown à direita do botão */
+  left: auto; /* Anula o left: 0 padrão dos outros dropdowns */
+  border-top: 1px solid #e0e0e0;
+}
+
+/* --- SEUS ESTILOS EXISTENTES (AJUSTADOS PARA O NOVO LAYOUT) --- */
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-grow: 1; /* Permite que o container ocupe todo o espaço vertical restante */
+  /* Removido height: 100vh; daqui pois já é tratado pelo flex-grow do body */
+}
+
+.sidebar {
+  width: 280px; /* Largura ajustada para ser um pouco mais larga */
+  background-color: #ffffff;
+  padding: 20px; /* Padding ajustado */
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column; /* Ajustado para coluna para ícone em cima e texto abaixo */
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: grab;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.product-item:hover {
+  background-color: #e8f0fe;
+  border-color: #a7d2ff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.product-item img {
+  width: 60px; /* Tamanho do ícone ajustado */
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.product-item > span:first-child:not(.equipment-name) {
+  font-size: 30px; /* Ajuste para o tamanho do ícone como texto */
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.product-item span {
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
+}
+
+hr {
+  width: 80%;
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 15px 0;
+}
+
+.workspace {
+  flex-grow: 1;
+  background-color: #eff3f6;
+  padding: 30px;
+  position: relative;
+  border-left: 1px dashed #c0c0c0;
+  overflow: hidden;
+}
+
+.workspace h2 {
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 24px;
+  opacity: 0.7;
+}
+
+.dragged-equipment {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d0d0d0;
+  cursor: grab;
+  min-width: 130px;
+  max-width: 160px;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+  font-size: 0.85em;
+}
+
+.dragged-equipment:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+}
+
+.dragged-equipment.tv > span:first-child,
+.dragged-equipment.notebook > span:first-child {
+  font-size: 50px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.dragged-equipment h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.dragged-equipment .equipment-name {
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.linha {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.luz-container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.luz {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: 1px solid #999;
+  transition: all 0.3s ease;
+}
+
+.luz-container span {
+  font-size: 12px;
+  color: #555;
+  font-weight: 500;
+}
+
+.verde {
+  background-color: #00c853;
+  box-shadow: 0 0 6px #00c853;
+}
+
+.vermelha {
+  background-color: #d50000;
+  box-shadow: 0 0 6px #d50000;
+}
+
+.apagada {
+  background-color: #bbb;
+  box-shadow: none;
+}
+
+.piscar-verde {
+  animation: piscarVerde 1s infinite;
+  background-color: #00c853;
+}
+
+.piscar-vermelho {
+  animation: piscarVermelho 1s infinite;
+  background-color: #d50000;
+}
+
+@keyframes piscarVerde {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes piscarVermelho {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+button {
+  margin: 5px 3px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #115293;
+}
+
+.ports-section {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed #eee;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ports-section h4 {
+  width: 100%;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 14px;
+  text-align: center;
+}
+
+.port-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  color: #777;
+  position: relative;
+}
+
+.port {
+  width: 20px;
+  height: 12px;
+  background-color: #d3d3d3;
+  border: 1px solid #a0a0a0;
+  border-radius: 2px;
+  cursor: crosshair;
+  transition: all 0.2s ease;
+}
+
+.port:hover {
+  background-color: #a0a0a0;
+  border-color: #777;
+}
+
+.wan-port {
+  background-color: #ffb300;
+}
+.pon-port {
+  background-color: #00bcd4;
+}
+.power-source-port {
+  background-color: #d3d3d3;
+  border: 1px solid #a0a0a0;
+}
+
+.permanent-cable {
+  transition: stroke 0.3s ease;
+  stroke: #4caf50;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.permanent-cable:hover {
+  stroke: #ff5722 !important;
+  stroke-width: 4px !important;
+}
+
+#workspace {
+  min-height: 400px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#power-outlet {
+  position: absolute;
+  top: 30px; /* Ajustado para não colidir com o topo da área de trabalho */
+  right: 30px; /* Posição à direita, como no seu código original */
+  width: 80px;
+  height: 80px;
+  background-color: #4a4a4a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 0.8em;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  padding: 8px;
+}
+
+#power-outlet .power-hole {
+  width: 20px;
+  height: 20px;
+  background-color: #cccccc;
+  border-radius: 50%;
+  margin: 4px;
+  cursor: crosshair;
+  transition: background-color 0.2s ease;
+  position: relative;
+  border: 1px solid #999;
+}
+
+#power-outlet .power-hole:hover {
+  background-color: #eeeeee;
+}
+
+#power-outlet .luz {
+  margin-top: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+#trash-can {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  background-color: #dc3545;
+  border: 2px solid #c82333;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7em;
+  color: white;
+  text-align: center;
+  cursor: default;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  z-index: 2000;
+}
+
+#trash-can img {
+  width: 30px;
+  height: 30px;
+  filter: invert(100%);
+  margin-bottom: 5px;
+}
+
+#trash-can.highlight {
+  background-color: #c82333;
+  border-color: #bb2d3b;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.drag-over-trash {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewport="0 0 100 100" style="fill:white;font-size:24px;"><text y="50%">🗑️</text></svg>')
+      15 15,
+    auto !important;
+}
+
+/* Os estilos 'html, body { height: 100%; }' já foram incorporados no `body` principal para simplificar. */
