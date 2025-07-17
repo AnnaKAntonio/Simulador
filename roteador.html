@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP-Link Simulador</title>
+    <link rel="stylesheet" href="roteador.css" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <aside class="sidebar">
+            <div class="logo">tp-link</div>
+            <nav>
+                <ul>
+                    <li class="menu-item active" data-page="network">Network Map</li>
+                    <li class="menu-item" data-page="internet">Internet</li>
+                    <li class="menu-item" data-page="wireless">Wireless</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Conteúdo principal -->
+        <main class="main">
+            <!-- Abas superiores -->
+            <div class="tabs">
+                <a href="index.html" class="tab">Inicio</a>
+                <a href="roteador.html" class="tab">Basic</a>
+                <a href="avançado.html" class="tab">Advanced</a>
+                <select class="language">
+                    <option>English</option>
+                    <option>Português</option>
+                </select>
+                <div class="top-actions">
+                    <button>Log out</button>
+                    <button>Reboot</button>
+                    <button>Upgrade</button>
+                </div>
+            </div>
+
+            <!-- Conteúdo dinâmico -->
+            <div id="page-content">
+                <div class="status-panel">
+                    <div class="internet-status">
+                        <div class="icon">🌐</div>
+                        <div>Internet</div>
+                    </div>
+                    <div class="main-ap">
+                        <div class="icon">📶</div>
+                        <div>Main AP</div>
+                        <div>2.4GHz | 5GHz</div>
+                    </div>
+                </div>
+
+                <div class="topology">
+                    <h3>Topology</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Device Name</th>
+                                <th>IP Address</th>
+                                <th>MAC Address</th>
+                                <th>Connection Type</th>
+                                <th>Signal Strength</th>
+                                <th>Link Rate</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>ArcherNX200_DCAB</td>
+                                <td>192.168.1.1</td>
+                                <td>00:FF:00:41:DC:AB</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn-mesh">Add Mesh Device</button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="roteador.js"></script>
+</body>
+
+</html>
