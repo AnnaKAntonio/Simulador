@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de TV</title>
+    <link rel="stylesheet" href="tv.css">
+</head>
+
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="tabs">
+                <a href="pc.html" class="tab active">PC</a>
+                <a href="index.html" class="tab active">Back to Top</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="tv-container">
+        <div class="tv-screen" id="tvScreen">
+            <p id="tvMessage">TV Desligada</p>
+        </div>
+        <div class="tv-controls">
+            <button id="powerButton" class="control-button">Ligar / Desligar</button>
+            <button id="configButton" class="control-button">Configurações de Rede</button>
+        </div>
+    </div>
+
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalButton">&times;</span>
+            <h2>Configurações de Rede</h2>
+            <div class="form-group">
+                <label for="wifiName">Rede Wi-Fi:</label>
+                <input type="text" id="wifiName" value="Nome da Rede">
+            </div>
+            <div class="form-group">
+                <label for="wifiPassword">Senha:</label>
+                <input type="password" id="wifiPassword" value="Senha">
+            </div>
+            <div class="form-group">
+                <label for="ipAddress">Endereço IP:</label>
+                <input type="text" id="ipAddress" value="IP">
+            </div>
+            <button id="saveConfigButton" class="save-button">Salvar Configurações</button>
+        </div>
+    </div>
+
+    <script src="tv.js"></script>
+</body>
+
+</html>
