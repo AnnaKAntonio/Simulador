@@ -1,0 +1,218 @@
+/* --- Estilos Gerais (mantidos do código anterior) --- */
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column; /* Altera para coluna para o menu ficar em cima */
+  justify-content: flex-start; /* Alinha ao topo */
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Tema claro para o fundo da página */
+  margin: 0;
+  padding: 0; /* Remove padding do body para controlar com o header */
+  box-sizing: border-box;
+}
+
+/* --- Estilos para o Menu de Navegação --- */
+header {
+  width: 100%;
+  background-color: #e0e0e0; /* Fundo claro para o cabeçalho */
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px; /* Espaço entre o menu e a TV */
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center; /* Centraliza as abas */
+  align-items: center;
+  width: 100%;
+}
+
+.tabs {
+  display: flex;
+  background-color: #ffffff; /* Fundo das abas */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Garante que os cantos arredondados funcionem */
+}
+
+.tab {
+  padding: 12px 25px;
+  text-decoration: none;
+  color: #555555; /* Cor do texto das abas */
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-right: 1px solid #eeeeee; /* Separador entre abas */
+}
+
+.tab:last-child {
+  border-right: none; /* Remove a borda da última aba */
+}
+
+.tab:hover {
+  background-color: #e6e6e6; /* Cor ao passar o mouse */
+  color: #333333;
+}
+
+.tab.active {
+  background-color: #4caf50; /* Cor da aba ativa (verde) */
+  color: white;
+  cursor: default; /* Remove o ponteiro de clique na aba ativa */
+}
+
+.tab.active:hover {
+  background-color: #4caf50; /* Mantém a cor da aba ativa ao passar o mouse */
+}
+
+/* --- Estilos para o Simulador de TV (mantidos do código anterior) --- */
+.tv-container {
+  background-color: #ffffff; /* Fundo da TV */
+  border: 10px solid #cccccc; /* Borda externa da TV */
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px; /* Largura máxima da TV */
+}
+
+.tv-screen {
+  width: 100%;
+  height: 350px; /* Altura da tela */
+  background-color: #000000; /* Tela desligada */
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  border: 2px solid #333;
+}
+
+.tv-screen.on {
+  background-color: #add8e6; /* Azul claro para TV ligada */
+  color: #333333; /* Texto escuro para TV ligada */
+}
+
+/* Estilo para o ícone de Wi-Fi */
+.wifi-icon {
+  margin-left: 10px;
+  font-size: 1.2em; /* Pode ajustar o tamanho se necessário */
+}
+
+.tv-controls {
+  display: flex;
+  gap: 15px;
+}
+
+.control-button,
+.save-button {
+  padding: 12px 25px;
+  font-size: 1.1em;
+  background-color: #4caf50; /* Verde para botões de controle */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.control-button:hover,
+.save-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.control-button:active,
+.save-button:active {
+  transform: translateY(0);
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* <-- ESSA LINHA É CRUCIAL! Deve ser 'none' */
+  position: fixed; /* Fixo na tela */
+  z-index: 1; /* Acima de outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Permite scroll se o conteúdo for grande */
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semitransparente */
+  /* Não adicione 'display: flex;' aqui */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: calc(100% - 20px); /* 100% menos padding */
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.save-button {
+  margin-top: 20px;
+  background-color: #007bff; /* Azul para o botão de salvar */
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
