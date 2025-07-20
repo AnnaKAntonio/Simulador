@@ -1,0 +1,376 @@
+/* --- Estilos Gerais (copiado e adaptado de tv.css) --- */
+body {
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Tema claro para o fundo da página */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Estilos para o Menu de Navegação (copiado de tv.css) --- */
+header {
+  width: 100%;
+  background-color: #e0e0e0;
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px; /* Espaço entre o menu e o computador */
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.tabs {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.tab {
+  padding: 12px 25px;
+  text-decoration: none;
+  color: #555555;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-right: 1px solid #eeeeee;
+}
+
+.tab:last-child {
+  border-right: none;
+}
+
+.tab:hover {
+  background-color: #e6e6e6;
+  color: #333333;
+}
+
+.tab.active {
+  background-color: #007bff; /* Azul para a aba ativa do computador */
+  color: white;
+  cursor: default;
+}
+
+.tab.active:hover {
+  background-color: #007bff;
+}
+
+/* --- Novo container para organizar monitor e periféricos --- */
+.computer-setup-container {
+  display: flex;
+  align-items: flex-start; /* Alinha o topo dos elementos */
+  gap: 30px; /* Espaço entre o monitor e os periféricos */
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f8f8; /* Fundo leve para a área de trabalho */
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Estilos para o Simulador de Computador (ajustados) --- */
+.computer-container {
+  background-color: #ffffff;
+  border: 8px solid #333333; /* Borda escura para simular um monitor */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px; /* Largura fixa para o monitor */
+  height: 400px; /* Altura fixa para o monitor */
+  flex-shrink: 0; /* Não permite que encolha */
+}
+
+.computer-screen {
+  width: calc(100% - 20px);
+  height: calc(100% - 80px);
+  background-color: #000000; /* Tela desligada */
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  border: 1px solid #555;
+  overflow: hidden;
+}
+
+.computer-screen.on {
+  background-color: #e0ffff; /* Azul ciano claro para computador ligado (desktop) */
+  color: #333333;
+  font-size: 1.2em;
+  padding: 20px;
+  text-align: center;
+  display: block;
+}
+
+.computer-screen.on #computerMessage {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.computer-screen.on::before {
+  content: "Bem-vindo ao Desktop Simulador!";
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.computer-screen.on::after {
+  content: "Ícones de aplicativo aqui...";
+  display: block;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 15px;
+}
+
+.wifi-icon {
+  margin-left: 10px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+.computer-controls {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.control-button,
+.save-button {
+  padding: 12px 25px;
+  font-size: 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.control-button:hover,
+.save-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.control-button:active,
+.save-button:active {
+  transform: translateY(0);
+}
+
+/* --- Estilos para os Periféricos (Teclado e Mouse) --- */
+.peripherals-container {
+  display: flex;
+  flex-direction: column; /* Teclado e mouse um abaixo do outro */
+  gap: 20px; /* Espaço entre teclado e mouse */
+  align-items: flex-start; /* Alinha à esquerda */
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #e6e6e6; /* Fundo para os periféricos */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.keyboard {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 380px; /* Largura do teclado */
+  font-size: 0.8em;
+}
+
+.key-row {
+  display: flex;
+  gap: 5px; /* Espaço entre as teclas */
+  margin-bottom: 5px; /* Espaço entre as linhas de teclas */
+}
+
+.key {
+  background-color: #555;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border-bottom: 2px solid #333;
+  flex-grow: 1; /* Permite que as teclas se expandam */
+  text-align: center;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  white-space: nowrap; /* Evita que o texto da tecla quebre */
+}
+
+/* Tamanhos especiais de teclas */
+.key.large-key {
+  flex-basis: 25px;
+} /* ~ */
+.key.backspace {
+  flex-basis: 60px;
+}
+.key.tab-key {
+  flex-basis: 40px;
+}
+.key.backslash {
+  flex-basis: 30px;
+}
+.key.caps-lock {
+  flex-basis: 55px;
+}
+.key.enter {
+  flex-basis: 65px;
+}
+.key.shift-key {
+  flex-basis: 75px;
+}
+.key.control-key,
+.key.alt-key {
+  flex-basis: 35px;
+}
+.key.space-bar {
+  flex-basis: 150px;
+}
+.key.function-key {
+  background-color: #444; /* Cor diferente para teclas de função */
+  font-size: 0.7em;
+}
+
+.mouse {
+  background-color: #333;
+  border-radius: 50% / 30%; /* Forma ovalada para o mouse */
+  width: 80px;
+  height: 120px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.mouse-button {
+  background-color: #555;
+  border-radius: 0 0 5px 5px;
+  width: 35px;
+  height: 45px;
+  border-top: 1px solid #777;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.left-button {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  border-radius: 20px 0 5px 5px;
+}
+
+.right-button {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  border-radius: 0 20px 5px 5px;
+}
+
+.mouse-scroll {
+  background-color: #777;
+  width: 10px;
+  height: 25px;
+  border-radius: 5px;
+  margin-top: 15px; /* Espaço entre o topo e o scroll */
+  z-index: 1; /* Para ficar por cima dos botões */
+}
+
+/* Modal Styles (mantido igual) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.save-button {
+  margin-top: 20px;
+  background-color: #007bff;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
