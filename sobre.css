@@ -1,0 +1,146 @@
+/* Fonte base */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f9fafc;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Container principal */
+.about-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
+
+/* Navegação */
+.main-navigation {
+  margin-bottom: 30px;
+}
+
+.nav-button {
+  display: inline-block;
+  background-color: #0077cc;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #005fa3;
+}
+
+/* Cabeçalho */
+.about-header h1 {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  color: #222;
+  text-align: center;
+}
+
+/* Seções */
+.about-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.about-section h2 {
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  color: #005fa3;
+}
+
+.about-section h3 {
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.about-section p {
+  margin-bottom: 15px;
+}
+
+.about-section ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.about-section ul li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 10px;
+}
+
+.about-section ul li::before {
+  content: "•";
+  color: #0077cc;
+  font-size: 1.2em;
+  position: absolute;
+  left: -10px;
+  top: 0;
+}
+
+/* Negrito visual */
+.about-section strong {
+  color: #222;
+  font-weight: 600;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .about-page-container {
+    padding: 15px;
+  }
+
+  .about-header h1 {
+    font-size: 1.5em;
+  }
+
+  .nav-button {
+    padding: 10px 16px;
+    font-size: 0.95em;
+  }
+
+  .about-section h2 {
+    font-size: 1.3em;
+  }
+}
+/* Rodapé */
+.footer {
+  background-color: #0077cc;
+  color: #fff;
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 1em;
+  border-top: 4px solid #005fa3;
+  margin-top: 50px;
+  border-radius: 8px 8px 0 0;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #e0f0ff;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .footer {
+    font-size: 0.9em;
+    padding: 15px 10px;
+  }
+}
