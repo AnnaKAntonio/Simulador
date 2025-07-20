@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Computador</title>
+    <link rel="stylesheet" href="pc.css">
+</head>
+
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="tabs">
+                <a href="tv.html" class="tab"> TV</a>
+                <a href="index.html" class="tab active">Back to Top</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="computer-container">
+        <div class="computer-screen" id="computerScreen">
+            <p id="computerMessage">Computador Desligado</p>
+        </div>
+        <div class="computer-controls">
+            <button id="powerButton" class="control-button">Ligar / Desligar</button>
+            <button id="configButton" class="control-button">Configurações de Rede</button>
+        </div>
+    </div>
+
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalButton">&times;</span>
+            <h2>Configurações de Rede</h2>
+            <div class="form-group">
+                <label for="wifiName">Rede Wi-Fi:</label>
+                <input type="text" id="wifiName" value="MinhaRedeSimulada">
+            </div>
+            <div class="form-group">
+                <label for="wifiPassword">Senha:</label>
+                <input type="password" id="wifiPassword" value="minhasenha123">
+            </div>
+            <div class="form-group">
+                <label for="ipAddress">Endereço IP:</label>
+                <input type="text" id="ipAddress" value="192.168.1.100">
+            </div>
+            <button id="saveConfigButton" class="save-button">Salvar Configurações</button>
+        </div>
+    </div>
+
+    <script src="pc.js"></script>
+</body>
+
+</html>
