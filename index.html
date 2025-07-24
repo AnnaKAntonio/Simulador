@@ -167,51 +167,12 @@
 
         <div class="menu-group">
             <div class="menu-item">
-                File
-                <div class="dropdown-content">
-                    <a href="#">New Topology</a>
-                    <a href="#">Open...</a>
-                    <a href="#">Save</a>
-                    <a href="#">Save As...</a>
-                    <a href="#">Import</a>
-                    <a href="#">Export</a>
-                    <a href="#">Exit</a>
-                </div>
-            </div>
-            <div class="menu-item">
-                Edit
-                <div class="dropdown-content">
-                    <a href="#">Undo</a>
-                    <a href="#">Redo</a>
-                    <a href="#">Cut</a>
-                    <a href="#">Copy</a>
-                    <a href="#">Paste</a>
-                    <a href="#">Delete</a>
-                    <a href="#">Select All</a>
-                </div>
-            </div>
-            <div class="menu-item">
-                View
-                <div class="dropdown-content">
-                    <a href="#">Zoom In</a>
-                    <a href="#">Zoom Out</a>
-                    <a href="#">Fit to Window</a>
-                    <a href="#">Actual Size</a>
-                    <a href="#">Toolbar</a>
-                    <a href="#">Status Bar</a>
-                </div>
             </div>
             <div class="menu-item">
                 <div class="dropdown-content">
                     <a href="#">Packet Capture</a>
                     <a href="#">IP Address Calculator</a>
                     <a href="#">Subnet Mask Calculator</a>
-                </div>
-            </div>
-            <div class="menu-item">
-                Help
-                <div class="dropdown-content">
-                    <a href="about.html">About simulator</a>
                 </div>
             </div>
             <div class="menu-item">
@@ -232,29 +193,29 @@
                     <a href="pc.html">Start configuration</a>
                 </div>
             </div>
+            <div class="menu-item">
+                Speed test
+                <div class="dropdown-content">
+                    <a href="https://www.speedtest.net/pt" target="_blank">Start the test</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                Help
+                <div class="dropdown-content">
+                    <a href="about.html">About simulator</a>
+                </div>
+            </div>
+
         </div>
 
-
-
         <div class="toolbar">
-            <button class="icon-button" title="New"><img src="https://img.icons8.com/ios-filled/24/document.png"
-                    alt="New"></button>
             <button class="icon-button" title="Save"><img src="https://img.icons8.com/ios-filled/24/save.png"
                     alt="Save"></button>
             <button class="icon-button" title="Save As"><img src="https://img.icons8.com/ios-filled/24/save-as.png"
                     alt="Save As"></button>
-            <button class="icon-button" title="Delete"><img
-                    src="https://img.icons8.com/ios-filled/24/delete-forever.png" alt="Delete"></button>
             <div class="separator"></div>
-            <button class="icon-button" title="Undo"><img src="https://img.icons8.com/ios-filled/24/undo.png"
-                    alt="Undo"></button>
-            <button class="icon-button" title="Redo"><img src="https://img.icons8.com/ios-filled/24/redo.png"
-                    alt="Redo"></button>
             <button class="icon-button" title="Pint"><img src="https://img.icons8.com/ios-filled/24/print.png"
                     alt="Paste"></button>
-            <button class="icon-button" title="Delete"><img
-                    src="https://img.icons8.com/ios-filled/24/delete-forever.png" alt="Delete"></button>
-            <div class="separator"></div>
             <button class="icon-button" title="Manage Devices"><img
                     src="https://img.icons8.com/ios-filled/24/settings--v1.png" alt="Manage Devices"></button>
         </div>
@@ -315,10 +276,13 @@
 
     <div id="trash-can">
         <img src="https://img.icons8.com/ios-filled/50/trash.png" alt="Lixeira" />
-        <span>Arraste para Remover</span>
+        <span>Drag to Remove</span>
     </div>
 
     <script src="script.js"></script>
+    <script src="barra.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
 </body>
 
 </html>
