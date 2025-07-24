@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Referências aos elementos do DOM para o computador
     const computerScreen = document.getElementById('computerScreen');
-    const computerMessage = document.getElementById('computerMessage'); // Mudou de tvMessage
+    const computerMessage = document.getElementById('computerMessage');
     const powerButton = document.getElementById('powerButton');
     const configButton = document.getElementById('configButton');
     const configModal = document.getElementById('configModal');
@@ -20,12 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isComputerOn) {
             computerScreen.classList.add('on');
-            // Verifica se já tem sinal de internet ao ligar
-            if (hasInternetSignal) {
-                computerMessage.innerHTML = 'Conectado à Internet <span class="wifi-icon">📶</span>';
-            } else {
-                computerMessage.textContent = 'Inicializando...';
-            }
+            computerMessage.textContent = 'Inicializando sistema...';
+
+            setTimeout(() => {
+                if (hasInternetSignal) {
+                    computerMessage.innerHTML = 'Conectado à Internet <span class="wifi-icon">📶</span>';
+                } else {
+                    computerMessage.textContent = 'Sem conexão com a rede. Verifique a rede Wi-Fi.';
+                }
+            }, 1500); // Mostra a mensagem após 1.5 segundos
+
             powerButton.textContent = 'Desligar';
             alert('O computador foi ligado.');
         } else {
