@@ -2,53 +2,342 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de TV</title>
-    <link rel="stylesheet" href="tv.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador de Configuração da TV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---------------------------------------------------- */
+        /* VARIÁVEIS DE CORES: TEMA ESCURO (Padrão) */
+        /* ---------------------------------------------------- */
+        :root {
+            --cor-fundo-body: #121212;
+            --cor-texto-principal: #e0e0e0;
+            --cor-texto-secundario: #999;
+            --cor-menu-fundo: rgba(30, 30, 30, 0.85);
+            --cor-menu-borda-inferior: #666;
+            --cor-tab-hover: #444;
+            --cor-tab-active-borda: #1e90ff; /* Azul vibrante */
+            --cor-input-fundo: #444;
+            --cor-input-borda: #666;
+            --cor-botao-salvar: #1e90ff;
+            --cor-botao-salvar-hover: #187bcd;
+        }
+
+        /* ---------------------------------------------------- */
+        /* VARIÁVEIS DE CORES: TEMA CLARO */
+        /* ---------------------------------------------------- */
+        .light-mode {
+            --cor-fundo-body: #f0f2f5;
+            --cor-texto-principal: #333;
+            --cor-texto-secundario: #6c757d;
+            --cor-menu-fundo: rgba(255, 255, 255, 0.9);
+            --cor-menu-borda-inferior: #ddd;
+            --cor-tab-hover: #f1f1f1;
+            --cor-tab-active-borda: #2980b9;
+            --cor-input-fundo: #fff;
+            --cor-input-borda: #ccc;
+            --cor-botao-salvar: #2980b9;
+            --cor-botao-salvar-hover: #216a96;
+        }
+
+        /* ---------------------------------------------------- */
+        /* ESTILOS GERAIS */
+        /* ---------------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            color: var(--cor-texto-principal);
+            background-color: var(--cor-fundo-body);
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tv-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .tv-menu {
+            background: var(--cor-menu-fundo);
+            width: 350px;
+            height: 100%;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--cor-menu-borda-inferior);
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Estilo do botão de alternância de tema */
+        .theme-toggle-btn {
+            background: none;
+            border: 1px solid var(--cor-texto-principal);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            color: var(--cor-texto-principal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: border-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--cor-tab-active-borda);
+            color: var(--cor-tab-active-borda);
+            transform: scale(1.1);
+        }
+
+        .tabs {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tabs button {
+            background: none;
+            border: none;
+            color: var(--cor-texto-principal);
+            text-align: left;
+            padding: 12px 10px; /* Espaçamento aprimorado */
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .tabs button:hover,
+        .tabs button.active {
+            background: var(--cor-tab-hover);
+            border-left: 4px solid var(--cor-tab-active-borda);
+            padding-left: 10px;
+        }
+
+        .tab-content {
+            margin-top: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--cor-menu-borda-inferior);
+            padding-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--cor-texto-secundario);
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            background: var(--cor-input-fundo);
+            border: 1px solid var(--cor-input-borda);
+            color: var(--cor-texto-principal);
+            border-radius: 4px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: var(--cor-tab-active-borda);
+        }
+
+        button.save-btn {
+            margin-top: 25px;
+            padding: 12px;
+            width: 100%;
+            background: var(--cor-botao-salvar);
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        button.save-btn:hover {
+            background: var(--cor-botao-salvar-hover);
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <nav class="main-nav">
-            <div class="tabs">
-                <a href="pc.html" class="tab active">PC</a>
-                <a href="index.html" class="tab active">Back to Top</a>
-            </div>
-        </nav>
-    </header>
+    <img class="tv-background" src="../Onu/imagens/tv.png" alt="TV Ligada">
 
-    <div class="tv-container">
-        <div class="tv-screen" id="tvScreen">
-            <p id="tvMessage">TV Desligada</p>
+    <div class="tv-menu">
+        <h1>
+            Menu da TV
+            <button id="themeToggleBtn" class="theme-toggle-btn" title="Alternar tema">
+                <span id="themeIcon">☀️</span>
+            </button>
+        </h1>
+        <div class="tabs">
+            <button class="active" onclick="openTab('wifi', this)">Rede Wi-Fi</button>
+            <button onclick="openTab('ip', this)">Configuração IP</button>
+            <button onclick="openTab('status', this)">Status da TV</button>
         </div>
-        <div class="tv-controls">
-            <button id="powerButton" class="control-button">Ligar / Desligar</button>
-            <button id="configButton" class="control-button">Configurações de Rede</button>
+
+        <div id="wifi" class="tab-content">
+            <h2>Conectar Wi-Fi</h2>
+            <label>Nome da Rede (SSID):</label>
+            <input type="text" id="ssid" placeholder="Ex: MinhaRede" />
+            <label>Senha:</label>
+            <input type="password" id="wifiPassword" placeholder="Senha da rede" />
+            <button class="save-btn" onclick="saveWiFi()">Salvar Wi-Fi</button>
+        </div>
+
+        <div id="ip" class="tab-content" style="display:none;">
+            <h2>Configuração de IP</h2>
+            <label>
+                <input type="radio" name="ipMode" value="dhcp" checked onchange="toggleIPFields()" /> IP Automático
+                (DHCP)
+            </label><br />
+            <label>
+                <input type="radio" name="ipMode" value="manual" onchange="toggleIPFields()" /> IP Manual
+            </label><br /><br />
+
+            <div id="manualIPFields" style="display:none;">
+                <label>IP:</label>
+                <input type="text" id="ipAddress" placeholder="192.168.1.100" /><br />
+                <label>Máscara:</label>
+                <input type="text" id="subnetMask" placeholder="255.255.255.0" /><br />
+                <label>Gateway:</label>
+                <input type="text" id="gateway" placeholder="192.168.1.1" />
+            </div>
+
+            <button class="save-btn" onclick="saveIP()">Salvar IP</button>
+        </div>
+
+        <div id="status" class="tab-content" style="display:none;">
+            <h2>Status da TV</h2>
+            <p><strong>Rede Wi-Fi:</strong> <span id="statusSSID">Não conectado</span></p>
+            <p><strong>IP:</strong> <span id="statusIP">Desconhecido</span></p>
         </div>
     </div>
 
-    <div id="configModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" id="closeModalButton">&times;</span>
-            <h2>Configurações de Rede</h2>
-            <div class="form-group">
-                <label for="wifiName">Rede Wi-Fi:</label>
-                <input type="text" id="wifiName" value="Nome da Rede">
-            </div>
-            <div class="form-group">
-                <label for="wifiPassword">Senha:</label>
-                <input type="password" id="wifiPassword" value="Senha">
-            </div>
-            <div class="form-group">
-                <label for="ipAddress">Endereço IP:</label>
-                <input type="text" id="ipAddress" value="IP">
-            </div>
-            <button id="saveConfigButton" class="save-button">Salvar Configurações</button>
-        </div>
-    </div>
+    <script>
+        let wifiConfig = { ssid: "", password: "" };
+        let ipConfig = { mode: "dhcp", ip: "", subnet: "", gateway: "" };
 
-    <script src="tv.js"></script>
+        function openTab(tabId, el) {
+            document.querySelectorAll(".tab-content").forEach(tab => {
+                tab.style.display = "none";
+            });
+            document.getElementById(tabId).style.display = "block";
+
+            document.querySelectorAll(".tabs button").forEach(btn => {
+                btn.classList.remove("active");
+            });
+            el.classList.add("active");
+        }
+
+        function saveWiFi() {
+            const ssid = document.getElementById("ssid").value;
+            const password = document.getElementById("wifiPassword").value;
+            wifiConfig = { ssid, password };
+            alert("Wi-Fi salvo!");
+            updateStatus();
+        }
+
+        function toggleIPFields() {
+            const mode = document.querySelector('input[name="ipMode"]:checked').value;
+            document.getElementById("manualIPFields").style.display = mode === "manual" ? "block" : "none";
+        }
+
+        function saveIP() {
+            const mode = document.querySelector('input[name="ipMode"]:checked').value;
+            if (mode === "manual") {
+                const ip = document.getElementById("ipAddress").value;
+                const subnet = document.getElementById("subnetMask").value;
+                const gateway = document.getElementById("gateway").value;
+                ipConfig = { mode, ip, subnet, gateway };
+            } else {
+                ipConfig = { mode, ip: "192.168.1.123", subnet: "255.255.255.0", gateway: "192.168.1.1" };
+            }
+            alert("Configuração IP salva!");
+            updateStatus();
+        }
+
+        function updateStatus() {
+            document.getElementById("statusSSID").innerText = wifiConfig.ssid || "Não conectado";
+            document.getElementById("statusIP").innerText = ipConfig.mode === "dhcp" ? ipConfig.ip : ipConfig.ip || "Desconhecido";
+        }
+
+        // ------------------- FUNÇÕES DO MODO CLARO/ESCURO -------------------
+        const themeToggleBtn = document.getElementById("themeToggleBtn");
+        const themeIcon = document.getElementById("themeIcon");
+
+        themeToggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+            
+            // Salva a preferência do usuário no localStorage
+            if (document.body.classList.contains("light-mode")) {
+                localStorage.setItem("theme", "light");
+                themeIcon.textContent = '🌙'; // Altera o ícone para a lua
+            } else {
+                localStorage.setItem("theme", "dark");
+                themeIcon.textContent = '☀️'; // Altera o ícone para o sol
+            }
+        });
+
+        // Verifica o tema salvo no localStorage ao carregar a página
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem("theme");
+            // Se não houver tema salvo, define o tema escuro como padrão.
+            if (savedTheme === "light") {
+                document.body.classList.add("light-mode");
+                themeIcon.textContent = '🌙';
+            } else {
+                // Tema padrão (escuro)
+                document.body.classList.remove("light-mode");
+                themeIcon.textContent = '☀️';
+            }
+        });
+    </script>
 </body>
 
 </html>
