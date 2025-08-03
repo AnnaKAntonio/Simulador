@@ -408,7 +408,7 @@ function addElementToWorkspace(x, y, type) {
                 <div class="luz-container">PWR: <span id="${newId}-pwrD" class="luz apagada"></span></div>
             </div>
             <div class="linha">
-                <div class="luz-container">LAN: <span id="${newId}-lanD" class="luz apagada"></span></div>
+                <div class="luz-container">WIFI: <span id="${newId}-lanD" class="luz apagada"></span></div>
             </div>
         `;
         buttonsHtml = `
@@ -1118,3 +1118,4 @@ function clearWorkspace() {
   });
   connections.length = 0;
 }
+
