@@ -22,8 +22,8 @@ html {
 .top-navbar {
   display: flex; /* Usa flexbox para alinhar itens horizontalmente */
   align-items: center; /* Alinha itens verticalmente ao centro */
-  background-color: #f0f0f0; /* Fundo cinza claro */
-  border-bottom: 1px solid #c0c0c0; /* Borda inferior sutil */
+  background-color: white; /* Fundo cinza claro */
+  border-bottom: 1px solid grey; /* Borda inferior sutil */
   padding: 5px 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra suave */
   position: relative;
@@ -35,16 +35,16 @@ html {
 }
 
 .top-navbar .logo {
-  height: 30px; /* Ajuste o tamanho do logo */
-  margin-right: 15px;
-  vertical-align: middle; /* Alinhamento vertical para o logo */
-  color: #00cfff; /* Pink */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cor-destaque);
+  color: #00cfff;
 }
 
 .top-navbar .menu-group {
   display: flex;
   align-items: center;
-  gap: 0px; /* Sem espaçamento entre itens de menu por padrão, os separadores cuidam disso */
+  gap: 0px;
 }
 
 .top-navbar .menu-item {
@@ -566,5 +566,3 @@ button:hover {
       15 15,
     auto !important;
 }
-
-/* Os estilos 'html, body { height: 100%; }' já foram incorporados no `body` principal para simplificar. */
