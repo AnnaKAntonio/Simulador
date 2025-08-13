@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Utilização - Simulador NavelinkNet®</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Fonte base */
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: #f9fafc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Container principal */
+        .about-page-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 30px;
+        }
+
+        /* Navegação */
+        .main-navigation {
+            margin-bottom: 30px;
+        }
+
+        .nav-button {
+            display: inline-block;
+            background-color: #0077cc;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #005fa3;
+        }
+
+        /* Cabeçalho */
+        .about-header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            color: #222;
+            text-align: center;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+
+        /* Seções */
+        .about-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-section h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #005fa3;
+        }
+
+        .about-section h3 {
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .about-section p {
+            margin-bottom: 15px;
+        }
+
+        .about-section ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .about-section ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .about-section ul li::before {
+            content: "•";
+            color: #0077cc;
+            font-size: 1.2em;
+            position: absolute;
+            left: -10px;
+            top: 0;
+        }
+
+        .about-section strong {
+            color: #222;
+            font-weight: 600;
+        }
+
+        /* Responsivo */
+        @media (max-width: 600px) {
+            .about-page-container {
+                padding: 15px;
+            }
+
+            .about-header h1 {
+                font-size: 1.5em;
+            }
+
+            .nav-button {
+                padding: 10px 16px;
+                font-size: 0.95em;
+            }
+
+            .about-section h2 {
+                font-size: 1.3em;
+            }
+        }
+
+        /* Rodapé */
+        .footer {
+            background-color: #0077cc;
+            color: #fff;
+            text-align: center;
+            padding: 20px 15px;
+            font-size: 1em;
+            border-top: 4px solid #005fa3;
+            margin-top: 50px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #e0f0ff;
+        }
+
+        /* Responsivo */
+        @media (max-width: 600px) {
+            .footer {
+                font-size: 0.9em;
+                padding: 15px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="about-page-container">
+        <!-- Navegação -->
+        <div class="main-navigation">
+            <a href="index.html" class="nav-button">&larr; Return to Simulator</a>
+        </div>
+
+        <div class="about-header">
+            <h1>Manual de Utilização - Simulador NavelinkNet®</h1>
+        </div>
+
+        <div class="about-section">
+            <h2>Qual a função do simulador?</h2>
+            <p>O simulador foi criado para auxiliar o atendimento técnico ao cliente, permitindo que o atendente
+                acompanhe e entenda o passo a passo dos procedimentos usados pela empresa, para resolver um problema.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2>Funcionalidades do simulador</h2>
+            <h3>Equipamentos disponíveis:</h3>
+            <ul>
+                <li>Roteador</li>
+                <li>ONU</li>
+                <li>TV</li>
+                <li>Computador</li>
+            </ul>
+            <p>Teste de Velocidade | Aba "Sobre o simulador"</p>
+
+            <h3>Modos de salvar:</h3>
+            <ul>
+                <li>💾 Salvar</li>
+                <li>💾 Salvar como</li>
+                <li>🖨️ Imprimir</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2>Como usar o simulador</h2>
+            <h3>1. Posicionar os equipamentos</h3>
+            <p>Arraste o equipamento necessário para o centro da tela.</p>
+
+            <h3>2. Fazer ligações (energizar e conectar)</h3>
+            <ul>
+                <li><strong>Para ligar na tomada:</strong> Clique no botão PWR ou puxe um cabo do equipamento até a
+                    tomada.</li>
+                <li><strong>Para ligar entre equipamentos:</strong> Arraste um cabo do equipamento de origem até o
+                    equipamento de destino.</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2>Simulador do Roteador - Configuração</h2>
+            <h3>Acessar:</h3>
+            <p>Menu → Router → Start Configuration → Basic</p>
+
+            <h3>Configurações básicas:</h3>
+            <ul>
+                <li><strong>Aba Network Map > Internet:</strong> Configure a conexão PPPoE.</li>
+                <li><strong>Aba Wireless:</strong> Configure o nome da rede Wi-Fi e a senha.</li>
+            </ul>
+
+            <h3>Tornar Wi-Fi visível ou invisível:</h3>
+            <p>Alterar opção Hide SSID.</p>
+
+            <h3>Ativar/Desativar Wi-Fi:</h3>
+            <p>Desmarque a opção Enable.</p>
+
+            <h3>Configuração avançada</h3>
+            <h4>Acessar:</h4>
+            <p>Menu → Advanced</p>
+            <ul>
+                <li><strong>Aba Status > Remote Management:</strong> Ativar o acesso remoto:</li>
+            </ul>
+            <p>Marque as opções:</p>
+            <ul>
+                <li>Remote Management e Remote Management via HTTPS</li>
+            </ul>
+            <p><strong>Porta de acesso:</strong> Digite 80 ou 8080 no campo Port for HTTP.</p>
+            <p>Para voltar ao menu inicial, clique em Start.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Simulador TV e Computador - Configuração</h2>
+            <h3>Televisão</h3>
+            <h4>Acessar:</h4>
+            <p>Menu → Television → Start Configuration</p>
+            <p>Aparecerá o menu da TV, onde você pode guiar o cliente na configuração de Wi-Fi e IP.</p>
+            <p>Voltar ao menu: clique na seta do navegador.</p>
+
+            <h3>Computador</h3>
+            <h4>Acessar:</h4>
+            <p>Menu → Computer → Start Configuration</p>
+            <p>Acesse a barra de pesquisa e digite:</p>
+            <p>Configuração ou IP</p>
+            <p>Use isso para acessar a rede Wi-Fi ou configurar o IP com o cliente.</p>
+            <p>Clique em Buscar após digitar.</p>
+            <p>Voltar ao menu: clique na seta do navegador.</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Teste de Velocidade</h2>
+            <ul>
+                <li>Use o teste de velocidade para fazer o teste junto do cliente:</li>
+            </ul>
+            <p>Menu → Speed Test → Iniciar Teste</p>
+            <ul>
+                <li>Use a aba Help > About Simulator para informações gerais.</li>
+            </ul>
+            <p><strong>Observação:</strong> Lembre-se de que o teste de velocidade no simulador serve apenas para
+                acompanhar o cliente. O resultado exibido não é o mesmo teste que o cliente está realizando em tempo
+                real.</p>
+        </div>
+    </div>
+</body>
+<footer class="footer">
+    © 2025 Navelinknet. Todos os direitos reservados.
+</footer>
+
+</html>
